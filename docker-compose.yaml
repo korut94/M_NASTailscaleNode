@@ -4,10 +4,10 @@ services:
     container_name: tailscale-samba
     hostname: main-nas
     environment:
-      - TS_AUTHKEY=file:/etc/tailscale/auth_key
-      - TS_EXTRA_ARGS=--advertise-tags=tag:private  --login-server https://headscale.korut94.net
       - TS_STATE_DIR=/var/lib/tailscale
       - TS_USERSPACE=false
+    env_file:
+      - .env
     volumes:
       - /srv/docker/nas/tailscale/config:/etc/tailscale
       - /srv/docker/nas/tailscale/state:/var/lib/tailscale
@@ -21,7 +21,7 @@ services:
     container_name: samba
     restart: always
     environment:
-      NAME: "share"
+      - NAME=Share
     volumes:
       - ./storage:/storage
     network_mode: service:tailscale-samba
