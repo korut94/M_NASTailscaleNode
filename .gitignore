@@ -1,2 +1,4 @@
 # Environment
 .env
+# Samba
+users.conf
