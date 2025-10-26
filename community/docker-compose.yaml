@@ -1,6 +1,6 @@
 services:
   tailscale-samba:
-    image: tailscale/tailscale:latest
+    image: tailscale/tailscale:stable
     container_name: tailscale-samba-community
     hostname: community-nas
     environment:
